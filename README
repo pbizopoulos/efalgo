@@ -1,0 +1,12 @@
+# Machine learning development company
+https://pbizopoulos.github.io/machine-learning-development-company
+
+# Requirements
+POSIX Utilities
+Git
+Docker
+ 
+# Download, check and build
+git clone https://github.com/pbizopoulos/machine-learning-development-company
+cd machine-learning-development-company/
+cd docs/ && make clean check all && cd ..
