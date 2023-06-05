@@ -25,6 +25,13 @@
               max-width: 150px;
               margin: 50px;
             }
+            @media screen and (max-width: 767px) {
+             .client-logos img {
+             max-width: 75px; /* Further reduced max-width for mobile */
+             margin: 10px; /* Adjusted margin for mobile */
+            }
+            }
+
 
 
   </style>
@@ -32,15 +39,7 @@
 
 	<body>
 		<header>
-			<nav>
-				<a href="https://andybrewer.github.io/mvp/"><img alt="MVP.css" src="./assets/logo.png"></a>
-				<ul>
-					<li><a style="color: black" href="#about">About</a></li>
-					<li><a style="color: black" href="#services">Services</a></li>
-					<li><a style="color: black" href="#contact">Contact</a></li>
-				</ul>
-			</nav>
-			<h1>Kynalgo</h1>
+            <a href="https://andybrewer.github.io/mvp/" style="margin-left: -50px;"><img alt="MVP.css" src="./assets/logo.png" ></a>
             <h3>Tailored <code>Artificial Intelligence</code> solutions</h3>
 			<p>Unlock the potential of artificial intelligence for your business with our tailored consulting services. At Kynalgo, we specialize in helping small businesses harness the power of AI technologies to drive growth, enhance productivity, and gain a competitive edge in today's rapidly evolving digital landscape.</p>
             <br>
@@ -81,7 +80,7 @@
             <section>
                 <h2>Clients</h2>
                 <p>
-                <div class="client-logos" style="margin-top:-60px;">
+                <div class="client-logos">
                     <img alt="HTML only" src="./assets/Pfizer.svg">
                     <img alt="HTML only" src="./assets/tdl_wallpaper.png">
                     <img alt="HTML only" src="./assets/eketa.png">
