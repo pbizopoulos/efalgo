@@ -1,0 +1,21 @@
+body {
+    background-image: url("./assets/liquid-cheese.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    }
+.client-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.client-logos img {
+    max-width: 150px;
+    margin: 50px;
+}
+@media screen and (max-width: 767px) {
+    .client-logos img {
+        max-width: 75px;
+        margin: 10px;
+    }
+}
