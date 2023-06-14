@@ -1,5 +1,5 @@
-# Kynalgo
-https://pbizopoulos.github.io/kynalgo
+# Efalgo
+https://efalgo.com
 
 # Requirements
 POSIX Utilities
@@ -7,6 +7,6 @@ Git
 Docker
  
 # Download, check and build
-git clone https://github.com/pbizopoulos/kynalgo
-cd kynalgo/
+git clone https://github.com/pbizopoulos/efalgo
+cd efalgo/
 cd docs/ && make clean check all && cd ..
