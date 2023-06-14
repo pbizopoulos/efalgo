@@ -1,0 +1,12 @@
+# Kynalgo
+https://pbizopoulos.github.io/kynalgo
+
+# Requirements
+POSIX Utilities
+Git
+Docker
+ 
+# Download, check and build
+git clone https://github.com/pbizopoulos/kynalgo
+cd kynalgo/
+cd docs/ && make clean check all && cd ..
