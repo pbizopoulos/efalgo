@@ -16,6 +16,10 @@
   }
 }
 
+.p-img {
+  text-align: center;
+}
+
 :root {
   --color-link: #26608a;
   --color-bg: #e4e4e4;
