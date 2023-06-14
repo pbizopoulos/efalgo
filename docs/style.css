@@ -9,6 +9,13 @@
   max-width: 150px;
 }
 
+@media screen and (max-width: 767px) {
+  .client-logos img {
+    margin: 10px;
+    max-width: 75px;
+  }
+}
+
 :root {
   --color-link: #26608a;
   --color-bg: #e4e4e4;
