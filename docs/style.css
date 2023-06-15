@@ -5,14 +5,14 @@
 }
 
 .client-logos img {
-  margin: 10px;
-  width: 120px;
+  margin: 25px;
+  width: 85px;
 }
 
 @media screen and (max-width: 767px) {
   .client-logos img {
     margin: 10px;
-    max-width: 70px;
+    max-width: 40px;
   }
 }
 
