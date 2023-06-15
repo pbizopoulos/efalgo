@@ -6,7 +6,14 @@
 
 .client-logos img {
   margin: 10px;
-  width: 70px;
+  width: 120px;
+}
+
+@media screen and (max-width: 767px) {
+  .client-logos img {
+    margin: 10px;
+    max-width: 70px;
+  }
 }
 
 .p-img {
