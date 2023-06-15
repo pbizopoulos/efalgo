@@ -5,8 +5,15 @@
 }
 
 .client-logos img {
-  margin: 10px;
-  max-width: 75px;
+  margin: 60px;
+  max-width: 120px;
+}
+
+@media screen and (max-width: 767px) {
+  .client-logos img {
+    margin: 10px;
+    max-width: 75px;
+  }
 }
 
 .p-img {
