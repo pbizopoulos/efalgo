@@ -5,8 +5,8 @@
 }
 
 .client-logos img {
-  margin: 60px;
-  max-width: 120px;
+  margin: 50px;
+  max-width: 100px;
 }
 
 @media screen and (max-width: 767px) {
