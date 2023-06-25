@@ -7,6 +7,6 @@ Git
 Docker
  
 # Download, check and build
-git clone https://github.com/pbizopoulos/efalgo
+git clone https://github.com/efalgo/efalgo
 cd efalgo/
 cd docs/ && make clean check all && cd ..
