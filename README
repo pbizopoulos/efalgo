@@ -6,7 +6,12 @@ POSIX Utilities
 Git
 Docker
  
-# Download, check and build
+# Download
 git clone https://github.com/efalgo/efalgo
 cd efalgo/
+
+# Development
 cd docs/ && make clean check all && cd ..
+
+# Staging
+cd docs/ && make DEBUG=0
