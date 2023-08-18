@@ -9,7 +9,7 @@
   width: 85px;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (width <= 767px) {
   .client-logos img {
     margin: 10px;
     max-width: 40px;
