@@ -6,72 +6,93 @@
         <meta name="description" content="efalgo">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" href="./misc/logo-small.png">
-        <link rel="stylesheet" href="https://unpkg.com/mvp.css@1.12/mvp.css">
-        <link href="style.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
         <title>efalgo</title>
     </head>
 
     <body>
-        <header>
-            <img alt="efalgo" src="./misc/logo.svg" width="300" height="300">
-            <h3>Tailored <code>Artificial Intelligence</code> solutions</h3>
-            <p>We are a small team of dedicated full-stack machine learning experts. We use standardized development practices, rapid prototyping, and streamlined solutions to empower businesses and make cutting-edge machine learning accessible and impactful. Contact us at <a href="mailto:contact@efalgo.com">contact@efalgo.com</a> or book a free call to discuss your AI needs.</p>
-            <p>
-                <a href="mailto:contact@efalgo.com"><b>Contact us</b></a>
-                <a href="https://calendly.com/efalgo"><em>Book a free call</em></a>
-            </p>
+        <header class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h1>efalgo</h1>
+                    <h3>Artificial Intelligence solutions</h3>
+                    <p>We are a small team of full-stack machine learning experts. We use standardized development practices, rapid prototyping, and streamlined solutions to empower businesses and make cutting-edge machine learning accessible and impactful. Contact us at <a href="mailto:contact@efalgo.com">contact@efalgo.com</a> or book a free call to discuss your AI needs.</p>
+                    <p>
+                        <a href="mailto:contact@efalgo.com" class="btn btn-primary"><b>Contact us</b></a>
+                        <a href="https://calendly.com/efalgo" class="btn btn-secondary"><em>Book a free call</em></a>
+                    </p>
+                </div>
+            </div>
         </header>
-        <main>
+        <main class="container">
             <hr>
             <section id="services">
                 <header>
                     <h2>Services</h2>
                 </header>
-                <aside>
-                    <p class="p-img"><img alt="ML implementations" src="./misc/undraw_predictive_analytics_re_wxt8.svg" height="150"></p>
-                    <h3>ML implementations</h3>
-                    <ul>
-                        <li>Customized end-to-end machine learning solutions</li>
-                        <li>Cross-platform developement (Containers, Web, Mobile)</li>
-                        <li>State-of-the-art R&amp;D</li>
-                    </ul>
-                </aside>
-                <aside>
-                    <p class="p-img"><img alt="MLOps" src="./misc/undraw_animating_re_5gvn.svg" height="150"></p>
-                    <h3>MLOps</h3>
-                    <ul>
-                        <li>Efficient MLOps processes</li>
-                        <li>Robust data pipelines</li>
-                        <li>Reliable and automated testing/deployment</li>
-                        <li>Seamless updates and monitoring with CI/CD pipelines</li>
-                    </ul>
-                </aside>
-                <aside>
-                    <p class="p-img"><img alt="MVP and Production ready APIs" src="./misc/undraw_electricity_k2ft.svg" height="150"></p>
-                    <h3>MVP and Production ready APIs</h3>
-                    <ul>
-                        <li>Rapid MVP prototyping</li>
-                        <li>Production-ready ML APIs</li>
-                        <li>Scalable, secure and high-performance applications</li>
-                    </ul>
-                </aside>
+                <div class="row">
+                    <div class="col-md-4">
+                        <img alt="ML implementations" src="./misc/undraw_predictive_analytics_re_wxt8.svg" class="img-fluid" height="150">
+                        <h3>ML implementations</h3>
+                        <ul>
+                            <li>Customized end-to-end machine learning solutions</li>
+                            <li>Cross-platform development (Containers, Web, Mobile)</li>
+                            <li>State-of-the-art R&amp;D</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <img alt="MLOps" src="./misc/undraw_animating_re_5gvn.svg" class="img-fluid" height="150">
+                        <h3>MLOps</h3>
+                        <ul>
+                            <li>Efficient MLOps processes</li>
+                            <li>Robust data pipelines</li>
+                            <li>Reliable and automated testing/deployment</li>
+                            <li>Seamless updates and monitoring with CI/CD pipelines</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <img alt="MVP and Production ready APIs" src="./misc/undraw_electricity_k2ft.svg" class="img-fluid" height="150">
+                        <h3>MVP and Production ready APIs</h3>
+                        <ul>
+                            <li>Rapid MVP prototyping</li>
+                            <li>Production-ready ML APIs</li>
+                            <li>Scalable, secure and high-performance applications</li>
+                        </ul>
+                    </div>
+                </div>
             </section>
             <hr>
             <section>
                 <header>
                     <h2>Clients</h2>
                 </header>
-                <div class="client-logos">
-                    <img alt="Pfizer" src="./misc/Pfizer.svg">
-                    <img alt="Talend Data Labs" src="./misc/Talent-Data-Labs.png">
-                    <img alt="NTUA" src="./misc/ntua.png">
-                    <img alt="MIT" src="./misc/mit.svg">
+                <div class="row">
+                    <div class="col-md-3 text-center">
+                        <img alt="Pfizer" src="./misc/Pfizer.svg" class="img-fluid">
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <img alt="Talend Data Labs" src="./misc/Talent-Data-Labs.png" class="img-fluid">
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <img alt="NTUA" src="./misc/ntua.png" class="img-fluid">
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <img alt="MIT" src="./misc/mit.svg" class="img-fluid">
+                    </div>
                 </div>
-                <div class="client-logos">
-                    <img alt="dixa" src="./misc/Horizontal logo primary@2x-1.webp">
-                    <img alt="Schultz" src="./misc/schultz-logo_teams_150x100.png">
-                    <img alt="Josie" src="./misc/josie-logo_dark.svg">
-                    <img alt="Statum" src="./misc/statum.jpeg">
+                <div class="row">
+                    <div class="col-md-3 text-center">
+                        <img alt="dixa" src="./misc/Horizontal logo primary@2x-1.webp" class="img-fluid">
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <img alt="Schultz" src="./misc/schultz-logo_teams_150x100.png" class="img-fluid">
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <img alt="Josie" src="./misc/josie-logo_dark.svg" class="img-fluid">
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <img alt="Statum" src="./misc/statum.jpeg" class="img-fluid">
+                    </div>
                 </div>
             </section>
             <hr>
@@ -79,17 +100,33 @@
                 <header>
                     <h2>Tools</h2>
                 </header>
-                <div class="client-logos">
-                    <img alt="TensorFlow" src="./misc/tensorflow.png">
-                    <img alt="mlflow" src="./misc/mlflow.png">
-                    <img alt="PyTorch" src="./misc/pytorch.png">
-                    <img alt="HuggingFace" src="./misc/hugging-face.png">
+                <div class="row">
+                    <div class="col-md-3 text-center">
+                        <img alt="TensorFlow" src="./misc/tensorflow.png" class="img-fluid">
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <img alt="mlflow" src="./misc/mlflow.png" class="img-fluid">
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <img alt="PyTorch" src="./misc/pytorch.png" class="img-fluid">
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <img alt="HuggingFace" src="./misc/hugging-face.png" class="img-fluid">
+                    </div>
                 </div>
-                <div class="client-logos">
-                    <img alt="Docker" src="./misc/docker.webp">
-                    <img alt="AWS" src="./misc/aws.png">
-                    <img alt="FastAPI" src="./misc/fastapi.png">
-                    <img alt="" src="./misc/manymore.png">
+                <div class="row">
+                    <div class="col-md-3 text-center">
+                        <img alt="Docker" src="./misc/docker.webp" class="img-fluid">
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <img alt="AWS" src="./misc/aws.png" class="img-fluid">
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <img alt="FastAPI" src="./misc/fastapi.png" class="img-fluid">
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <!-- Placeholder for additional image -->
+                    </div>
                 </div>
             </section>
             <hr>
@@ -99,9 +136,10 @@
                 </blockquote>
             </section>
         </main>
-        <footer>
-            <p>Copyright &copy; 2023. All rights reserved.</p>
+        <footer class="container text-center">
+            <p>&copy; 2023. All rights reserved.</p>
         </footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     </body>
 
 </html>
