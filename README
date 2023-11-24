@@ -14,5 +14,5 @@ cd efalgo.com/
 cd docs/ && make clean check all && cd ..
 
 # Staging
-cd docs/ && make DEBUG=0
+cd docs/ && make STAGING=1
 
