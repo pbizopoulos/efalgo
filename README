@@ -1,18 +1,19 @@
 # efalgo.com
-https://efalgo.com
+# https://efalgo.com
 
 # Requirements
-POSIX Shell & Utilities
-Git
-Docker
+# POSIX Shell & Utilities
+# Git
+# Docker
 
 # Download
-git clone https://github.com/efalgo/efalgo.com $HOME/github.com/efalgo/efalgo.com
-cd $HOME/github.com/efalgo/efalgo.com/
+git clone git@github.com:efalgo/efalgo.com $HOME/github.com/efalgo/efalgo.com
 
 # Development
+cd $HOME/github.com/efalgo/efalgo.com/
 cd docs/ && make clean check all && cd ..
 
 # Staging
+cd $HOME/github.com/efalgo/efalgo.com/
 cd docs/ && make STAGING=1
 
