@@ -7,13 +7,13 @@
 # Docker
 
 # Download
-git clone git@github.com:efalgo/efalgo.com $HOME/github.com/efalgo/efalgo.com
+git clone git@github.com:efalgo/efalgo.com ~/github.com/efalgo/efalgo.com
 
 # Development
-cd $HOME/github.com/efalgo/efalgo.com/
+cd ~/github.com/efalgo/efalgo.com/
 cd docs/ && make clean check all && cd ..
 
 # Staging
-cd $HOME/github.com/efalgo/efalgo.com/
+cd ~/github.com/efalgo/efalgo.com/
 cd docs/ && make STAGING=1
 
