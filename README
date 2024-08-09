@@ -1,5 +1,4 @@
 # efalgo.com
-# https://efalgo.com
 
 # Requirements
 # POSIX Shell & Utilities
@@ -16,4 +15,7 @@ cd docs/ && make clean check all && cd ..
 # Stage
 cd ~/github.com/efalgo/efalgo.com/
 cd docs/ && make STAGE=1
+
+# Run
+# https://efalgo.com
 
