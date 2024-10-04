@@ -16,6 +16,7 @@ cd docs/ && make clean check all && cd ..
 # Stage
 cd ~/github.com/efalgo/efalgo.com/
 cd docs/ && make STAGE=1
+xdg-open https://localhost:8080
 
 # Run Requirements
 # Any Web Browser
