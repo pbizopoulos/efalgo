@@ -18,9 +18,9 @@ cd ~/github.com/efalgo/efalgo.com/
 cd docs/ && make STAGE=1
 xdg-open https://localhost:8080
 
-# Run Requirements
+# Use Requirements
 # Any Web Browser
 
-# Run
+# Use
 xdg-open https://efalgo.com
 
