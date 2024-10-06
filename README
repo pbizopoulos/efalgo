@@ -9,6 +9,7 @@ git clone git@github.com:efalgo/efalgo.com ~/github.com/efalgo/efalgo.com
 # Develop
 cd ~/github.com/efalgo/efalgo.com/
 cd docs/ && make clean check all && cd ..
+make clean check all
 
 # Stage Requirements
 # Develop Requirements

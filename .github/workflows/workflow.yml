@@ -7,3 +7,4 @@ jobs:
       - uses: cachix/install-nix-action@v27
       - run: |
           cd docs/ && make clean check all && cd ..
+          make clean check all
