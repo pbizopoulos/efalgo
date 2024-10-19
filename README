@@ -2,21 +2,20 @@
 
 # Develop Requirements
 # POSIX Shell & Utilities
+# POSIX Shell & Utilities
 # Git
 # Nix
 git clone git@github.com:efalgo/efalgo.com ~/github.com/efalgo/efalgo.com
 
 # Develop
-cd ~/github.com/efalgo/efalgo.com/
-cd docs/ && make clean check all && cd ..
-make clean check all
+make clean check all -C ~/github.com/efalgo/efalgo.com/docs/
+make clean check all -C ~/github.com/efalgo/efalgo.com/
 
 # Stage Requirements
 # Develop Requirements
 
 # Stage
-cd ~/github.com/efalgo/efalgo.com/
-cd docs/ && make STAGE=1
+make STAGE=1 -C ~/github.com/efalgo/efalgo.com/docs/
 xdg-open https://localhost:8080
 
 # Use Requirements

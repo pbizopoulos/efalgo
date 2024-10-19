@@ -6,5 +6,5 @@ jobs:
       - uses: actions/checkout@v4
       - uses: cachix/install-nix-action@v27
       - run: |
-          cd docs/ && make clean check all && cd ..
+          make clean check all -C docs/
           make clean check all
