@@ -1,26 +1,40 @@
 # efalgo.com
 
-# Develop Requirements
+# Use Requirements
 # POSIX Shell & Utilities
 # POSIX Shell & Utilities
 # Git
 # Nix
 git clone git@github.com:efalgo/efalgo.com ~/github.com/efalgo/efalgo.com
 
-# Develop
-make clean check all -C ~/github.com/efalgo/efalgo.com/docs/
-make clean check all -C ~/github.com/efalgo/efalgo.com/
-
-# Stage Requirements
-# Develop Requirements
-
-# Stage
-make STAGE=1 -C ~/github.com/efalgo/efalgo.com/docs/
+# Use
+make -C ~/github.com/efalgo/efalgo.com/docs/
 xdg-open https://localhost:8080
 
+# Debug Requirements
 # Use Requirements
+
+# Debug
+make DEBUG=1 clean check all -C ~/github.com/efalgo/efalgo.com/docs/
+make DEBUG=1 clean check all -C ~/github.com/efalgo/efalgo.com/
+
+# Deploy Requirements
+# Buy efalgo.com domain from DNS provider
+# Through the DNS provider create A records that point efalgo.com to:
+# 185.199.108.153
+# 185.199.109.153
+# 185.199.110.153
+# 185.199.111.153
+xdg-open https://github.com/efalgo/efalgo.com/settings/pages
+# Choose the /docs in the main branch in 'Build and deployment'
+# Add efalgo.com in 'Custom domain'
+
+# Deploy
+# Done automatically after each git push
+
+# Use Deployed Requirements
 # Any Web Browser
 
-# Use
+# Use Deployed
 xdg-open https://efalgo.com
 

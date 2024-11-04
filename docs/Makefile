@@ -21,9 +21,9 @@ tmp:
 	mkdir $@
 
 tmp/all-done: .gitignore flake.lock flake.nix index.html
-	nix develop --ignore-environment --keep STAGE .#all
+	nix develop --ignore-environment --keep DEBUG .#all
 	touch $@
 
 tmp/check-done: .gitignore flake.lock flake.nix index.html
-	nix develop --ignore-environment --keep STAGE .#check
+	nix develop --ignore-environment --keep DEBUG .#check
 	touch $@

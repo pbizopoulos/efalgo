@@ -1,4 +1,4 @@
-on: [push, pull_request, workflow_dispatch]
+on: [push, pull_request]
 jobs:
   develop:
     runs-on: ubuntu-20.04
@@ -6,5 +6,5 @@ jobs:
       - uses: actions/checkout@v4
       - uses: cachix/install-nix-action@v27
       - run: |
-          make clean check all -C docs/
-          make clean check all
+          make DEBUG=1 clean check all -C docs/
+          make DEBUG=1 clean check all

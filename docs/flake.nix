@@ -27,12 +27,12 @@
             buildInputs = dependencies;
             shellHook = ''
               set -e
-              if [ -n "$STAGE" ]; then
+              if [ -n "$DEBUG" ]; then
+                exit 0
+              else
                 openssl req -keyout tmp/privkey.pem -nodes -out tmp/fullchain.pem -subj '/C=..' -x509
                 http-server --cert tmp/fullchain.pem --key tmp/privkey.pem --tls
                 exit 1
-              else
-                exit 0
               fi
             '';
           };
