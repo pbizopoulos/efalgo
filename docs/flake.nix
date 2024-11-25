@@ -76,12 +76,12 @@
             };
             statix-check = {
               command = pkgs.statix;
-              includes = ["*.nix"];
+              includes = ["flake.nix"];
               options = ["check"];
             };
             statix-fix = {
               command = pkgs.statix;
-              includes = ["*.nix"];
+              includes = ["flake.nix"];
               options = ["fix"];
             };
           };

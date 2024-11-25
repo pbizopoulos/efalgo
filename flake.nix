@@ -71,29 +71,24 @@
               includes = ["deploy.sh" "deploy-requirements.sh"];
               options = ["--posix" "--write"];
             };
-            yamlfmt = {
-              command = pkgs.yamlfmt;
-              includes = [".github/workflows/workflow.yml"];
-            };
-            mypy = {
-              command = pkgs.python311Packages.mypy;
-              includes = ["main.py"];
-              options = [
-                "--cache-dir"
-                "tmp/mypy"
-                "--ignore-missing-imports"
-                "--strict"
-              ];
-            };
             statix-check = {
               command = pkgs.statix;
-              includes = ["*.nix"];
+              includes = ["flake.nix"];
               options = ["check"];
             };
             statix-fix = {
               command = pkgs.statix;
-              includes = ["*.nix"];
+              includes = ["flake.nix"];
               options = ["fix"];
+            };
+            tex-fmt = {
+              command = pkgs.tex-fmt;
+              includes = ["CITATION.bib"];
+              options = ["--keep"];
+            };
+            yamlfmt = {
+              command = pkgs.yamlfmt;
+              includes = [".github/workflows/workflow.yml"];
             };
           };
         };
