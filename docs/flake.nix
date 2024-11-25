@@ -1,12 +1,20 @@
 {
   inputs = {
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    flake-parts.url = "github:hercules-ci/flake-parts";
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = {
     self,
-    nixpkgs,
     flake-parts,
+    nixpkgs,
+    treefmt-nix,
   } @ inputs:
     flake-parts.lib.mkFlake {inherit inputs;} {
       systems = [
@@ -15,12 +23,15 @@
         "x86_64-darwin"
         "aarch64-darwin"
       ];
+      imports = [
+        inputs.treefmt-nix.flakeModule
+      ];
       perSystem = {system, ...}: let
-        pkgs = import nixpkgs {inherit system;};
         dependencies = [
           pkgs.http-server
           pkgs.openssl
         ];
+        pkgs = import nixpkgs {inherit system;};
       in {
         devShells = {
           all = pkgs.mkShell {
@@ -36,31 +47,45 @@
               fi
             '';
           };
-          check = pkgs.mkShell {
-            buildInputs =
-              dependencies
-              ++ [
-                pkgs.biome
-                pkgs.git
-                pkgs.nodePackages.js-beautify
-                pkgs.nodePackages.prettier
-                pkgs.nodejs
-              ];
-            shellHook = ''
-              set -e
-              nix flake check
-              nix fmt
-              prettier --write .
-              js-beautify --end-with-newline --indent-inner-html --no-preserve-newlines --type html --replace index.html
-              [ -e script.js ] && biome check --unsafe --write script.js || true
-              ls -ap | grep -v -E -x './|../|.env|.gitignore|CNAME|Makefile|index.html|flake.lock|flake.nix|prm/|pyscript/|python/|script.js|style.css|tmp/' | grep -q . && exit 1
-              test $(basename $(pwd)) = 'docs'
-              exit
-            '';
-          };
           default = pkgs.mkShell {buildInputs = dependencies;};
         };
-        formatter = pkgs.alejandra;
+        treefmt = {
+          projectRootFile = "flake.nix";
+          settings.global.excludes = ["prm/**" "pyscript/**" "python/**" "tmp/**"];
+          programs = {
+            alejandra.enable = true;
+            # deadnix.enable = true;
+          };
+          settings.formatter = {
+            biome = {
+              command = pkgs.biome;
+              options = [
+                "check"
+                "--unsafe"
+                "--write"
+              ];
+              includes = ["script.js"];
+            };
+            prettier = {
+              command = pkgs.nodePackages.prettier;
+              options = [
+                "--print-width"
+                "999"
+              ];
+              includes = ["index.html"];
+            };
+            statix-check = {
+              command = pkgs.statix;
+              includes = ["*.nix"];
+              options = ["check"];
+            };
+            statix-fix = {
+              command = pkgs.statix;
+              includes = ["*.nix"];
+              options = ["fix"];
+            };
+          };
+        };
       };
     };
 }

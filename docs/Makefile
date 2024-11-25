@@ -25,5 +25,7 @@ tmp/all-done: .gitignore flake.lock flake.nix index.html
 	touch $@
 
 tmp/check-done: .gitignore flake.lock flake.nix index.html
-	nix develop --ignore-environment --keep DEBUG .#check
+	nix fmt
+	if ls -ap | grep -v -E -x './|../|.env|.gitignore|CNAME|Makefile|index.html|flake.lock|flake.nix|prm/|pyscript/|python/|script.js|style.css|tmp/' | grep -q .; then false; fi
+	test $$(basename $$(pwd)) = "docs"
 	touch $@
