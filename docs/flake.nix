@@ -55,6 +55,7 @@
           programs = {
             alejandra.enable = true;
             deadnix.enable = true;
+            statix.enable = true;
           };
           settings.formatter = {
             biome = {
@@ -85,16 +86,6 @@
                 "999"
               ];
               includes = ["index.html"];
-            };
-            statix-check = {
-              command = pkgs.statix;
-              includes = ["flake.nix"];
-              options = ["check"];
-            };
-            statix-fix = {
-              command = pkgs.statix;
-              includes = ["flake.nix"];
-              options = ["fix"];
             };
           };
         };

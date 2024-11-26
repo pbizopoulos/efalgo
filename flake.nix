@@ -52,6 +52,7 @@
           programs = {
             alejandra.enable = true;
             deadnix.enable = true;
+            statix.enable = true;
           };
           settings.formatter = {
             actionlint = {
@@ -82,16 +83,6 @@
               command = pkgs.shfmt;
               includes = ["deploy.sh" "deploy-requirements.sh"];
               options = ["--posix" "--write"];
-            };
-            statix-check = {
-              command = pkgs.statix;
-              includes = ["flake.nix"];
-              options = ["check"];
-            };
-            statix-fix = {
-              command = pkgs.statix;
-              includes = ["flake.nix"];
-              options = ["fix"];
             };
             tex-fmt = {
               command = pkgs.tex-fmt;
