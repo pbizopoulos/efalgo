@@ -51,13 +51,20 @@
           settings.global.excludes = ["docs/**" "latex/**" "nix/**" "python/**" "tmp/**"];
           programs = {
             alejandra.enable = true;
+            beautysh.enable = true;
             deadnix.enable = true;
+            shellcheck.enable = true;
+            shfmt.enable = true;
             statix.enable = true;
+            yamlfmt.enable = true;
           };
           settings.formatter = {
             actionlint = {
               command = pkgs.actionlint;
               includes = [".github/workflows/workflow.yml"];
+            };
+            beautysh = {
+              includes = ["deploy.sh" "deploy-requirements.sh"];
             };
             check-directory = {
               command = pkgs.bash;
@@ -76,11 +83,9 @@
               includes = ["README"];
             };
             shellcheck = {
-              command = pkgs.shellcheck;
               includes = ["deploy.sh" "deploy-requirements.sh"];
             };
             shfmt = {
-              command = pkgs.shfmt;
               includes = ["deploy.sh" "deploy-requirements.sh"];
               options = ["--posix" "--write"];
             };
@@ -90,7 +95,6 @@
               options = ["--keep"];
             };
             yamlfmt = {
-              command = pkgs.yamlfmt;
               includes = [".github/workflows/workflow.yml"];
             };
           };
