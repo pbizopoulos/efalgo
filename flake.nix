@@ -15,12 +15,11 @@
     };
   };
   outputs = {
-    # deadnix: skip
-    self,
     nixpkgs,
     flake-parts,
     treefmt-nix,
     check-readme,
+    ...
   } @ inputs:
     flake-parts.lib.mkFlake {inherit inputs;} {
       systems = [
