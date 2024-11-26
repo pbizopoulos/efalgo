@@ -100,5 +100,6 @@
           };
         };
       };
+      flake.templates.default.path = ./.;
     };
 }
