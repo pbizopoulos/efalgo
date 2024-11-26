@@ -58,6 +58,18 @@
               command = pkgs.actionlint;
               includes = [".github/workflows/workflow.yml"];
             };
+            check-directory = {
+              command = pkgs.bash;
+              options = [
+                "-euc"
+                ''
+                  if ls -ap | grep -v -E -x './|../|.env|.git/|.github/|.gitignore|CITATION.bib|LICENSE|Makefile|README|deploy.sh|deploy-requirements.sh|docs/|flake.lock|flake.nix|latex/|nix/|python/|tmp/' | grep -q .; then exit 1; fi
+                  if printf "$(basename $(pwd))" | grep -v -E -x '^[a-z0-9]+([-.][a-z0-9]+)*$'; then false; fi
+                ''
+                "--"
+              ];
+              includes = ["**"];
+            };
             check-readme = {
               command = check-readme.packages.${system}.default;
               includes = ["README"];

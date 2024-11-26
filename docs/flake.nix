@@ -66,6 +66,18 @@
               ];
               includes = ["script.js"];
             };
+            check-directory = {
+              command = pkgs.bash;
+              options = [
+                "-euc"
+                ''
+                  if ls -ap | grep -v -E -x './|../|.env|.gitignore|CNAME|Makefile|index.html|flake.lock|flake.nix|prm/|pyscript/|python/|script.js|style.css|tmp/' | grep -q .; then exit 1; fi
+                  test $(basename $(pwd)) = "docs"
+                ''
+                "--"
+              ];
+              includes = ["**"];
+            };
             prettier = {
               command = pkgs.nodePackages.prettier;
               options = [
