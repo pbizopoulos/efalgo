@@ -54,18 +54,15 @@
           settings.global.excludes = ["prm/**" "pyscript/**" "python/**" "tmp/**"];
           programs = {
             alejandra.enable = true;
+            biome.enable = true;
             deadnix.enable = true;
+            prettier.enable = true;
             statix.enable = true;
           };
           settings.formatter = {
             biome = {
-              command = pkgs.biome;
-              options = [
-                "check"
-                "--unsafe"
-                "--write"
-              ];
-              includes = ["script.js"];
+              options = ["check" "--unsafe" "--write"];
+              includes = ["script.js" "style.css"];
             };
             check-directory = {
               command = pkgs.bash;
@@ -80,11 +77,7 @@
               includes = ["**"];
             };
             prettier = {
-              command = pkgs.nodePackages.prettier;
-              options = [
-                "--print-width"
-                "999"
-              ];
+              options = ["--print-width" "999"];
               includes = ["index.html"];
             };
           };
