@@ -11,6 +11,7 @@
     };
   };
   outputs = {
+    # deadnix: skip
     self,
     flake-parts,
     nixpkgs,
@@ -54,7 +55,7 @@
           settings.global.excludes = ["prm/**" "pyscript/**" "python/**" "tmp/**"];
           programs = {
             alejandra.enable = true;
-            # deadnix.enable = true;
+            deadnix.enable = true;
           };
           settings.formatter = {
             biome = {

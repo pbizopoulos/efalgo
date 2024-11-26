@@ -15,6 +15,7 @@
     };
   };
   outputs = {
+    # deadnix: skip
     self,
     nixpkgs,
     flake-parts,
@@ -50,8 +51,8 @@
           projectRootFile = "flake.nix";
           settings.global.excludes = ["docs/**" "latex/**" "nix/**" "python/**" "tmp/**"];
           programs = {
-            # deadnix.enable = true;
             alejandra.enable = true;
+            deadnix.enable = true;
           };
           settings.formatter = {
             actionlint = {
