@@ -61,7 +61,7 @@
           };
           settings.formatter = {
             biome = {
-              options = ["check" "--unsafe" "--write"];
+              options = ["check" "--unsafe"];
               includes = ["script.js" "style.css"];
             };
             check-directory = {
