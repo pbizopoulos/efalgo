@@ -15,10 +15,10 @@
     };
   };
   outputs = {
-    nixpkgs,
-    flake-parts,
-    treefmt-nix,
     check-readme,
+    flake-parts,
+    nixpkgs,
+    treefmt-nix,
     ...
   } @ inputs:
     flake-parts.lib.mkFlake {inherit inputs;} {
