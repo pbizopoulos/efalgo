@@ -50,6 +50,7 @@
           projectRootFile = "flake.nix";
           settings.global.excludes = ["docs/**" "latex/**" "nix/**" "python/**" "tmp/**"];
           programs = {
+            actionlint.enable = true;
             alejandra.enable = true;
             beautysh.enable = true;
             deadnix.enable = true;
@@ -60,7 +61,6 @@
           };
           settings.formatter = {
             actionlint = {
-              command = pkgs.actionlint;
               includes = [".github/workflows/workflow.yml"];
             };
             beautysh = {
