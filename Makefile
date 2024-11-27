@@ -14,6 +14,7 @@ README:
 tmp:
 	mkdir $@
 
-tmp/check-done: .gitignore README flake.nix tmp
+tmp/check-done: .gitignore README flake.lock flake.nix tmp
 	nix fmt
+	nix flake check
 	touch $@

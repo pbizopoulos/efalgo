@@ -32,23 +32,9 @@
         inputs.treefmt-nix.flakeModule
       ];
       perSystem = {system, ...}: let
-        pkgs = import nixpkgs {
-          inherit system;
-          config.allowUnfree = true;
-        };
+        pkgs = import nixpkgs {inherit system;};
       in {
-        devShells = {
-          all = pkgs.mkShell {
-            shellHook = ''
-              set -e
-              exit
-            '';
-          };
-          default = pkgs.mkShell {};
-        };
         treefmt = {
-          projectRootFile = "flake.nix";
-          settings.global.excludes = ["docs/**" "latex/**" "nix/**" "python/**" "tmp/**"];
           programs = {
             actionlint.enable = true;
             alejandra.enable = true;
@@ -59,47 +45,58 @@
             statix.enable = true;
             yamlfmt.enable = true;
           };
-          settings.formatter = {
-            actionlint = {
-              includes = [".github/workflows/workflow.yml"];
+          projectRootFile = "flake.nix";
+          settings = {
+            formatter = {
+              actionlint = {
+                includes = [".github/workflows/workflow.yml"];
+              };
+              beautysh = {
+                includes = ["deploy.sh" "deploy-requirements.sh"];
+              };
+              check-directory = {
+                command = pkgs.bash;
+                options = [
+                  "-euc"
+                  ''
+                    if ls -ap | grep -v -E -x './|../|.env|.git/|.github/|.gitignore|CITATION.bib|LICENSE|Makefile|README|deploy.sh|deploy-requirements.sh|docs/|flake.lock|flake.nix|latex/|nix/|python/|tmp/' | grep -q .; then
+                      exit 1
+                    fi
+                    if printf "$(basename $(pwd))" | grep -v -E -x '^[a-z0-9]+([-.][a-z0-9]+)*$'; then
+                      false
+                    fi
+                  ''
+                  "--"
+                ];
+                includes = ["flake.nix"];
+              };
+              check-readme = {
+                command = check-readme.packages.${system}.default;
+                includes = ["README"];
+              };
+              shellcheck = {
+                includes = ["deploy.sh" "deploy-requirements.sh"];
+              };
+              shfmt = {
+                includes = ["deploy.sh" "deploy-requirements.sh"];
+                options = ["--posix" "--write"];
+              };
+              tex-fmt = {
+                command = pkgs.tex-fmt;
+                includes = ["CITATION.bib"];
+                options = ["--keep"];
+              };
+              yamlfmt = {
+                includes = [".github/workflows/workflow.yml"];
+              };
             };
-            beautysh = {
-              includes = ["deploy.sh" "deploy-requirements.sh"];
-            };
-            check-directory = {
-              command = pkgs.bash;
-              options = [
-                "-euc"
-                ''
-                  if ls -ap | grep -v -E -x './|../|.env|.git/|.github/|.gitignore|CITATION.bib|LICENSE|Makefile|README|deploy.sh|deploy-requirements.sh|docs/|flake.lock|flake.nix|latex/|nix/|python/|tmp/' | grep -q .; then exit 1; fi
-                  if printf "$(basename $(pwd))" | grep -v -E -x '^[a-z0-9]+([-.][a-z0-9]+)*$'; then false; fi
-                ''
-                "--"
-              ];
-              includes = ["**"];
-            };
-            check-readme = {
-              command = check-readme.packages.${system}.default;
-              includes = ["README"];
-            };
-            shellcheck = {
-              includes = ["deploy.sh" "deploy-requirements.sh"];
-            };
-            shfmt = {
-              includes = ["deploy.sh" "deploy-requirements.sh"];
-              options = ["--posix" "--write"];
-            };
-            tex-fmt = {
-              command = pkgs.tex-fmt;
-              includes = ["CITATION.bib"];
-              options = ["--keep"];
-            };
-            yamlfmt = {
-              includes = [".github/workflows/workflow.yml"];
-            };
+            global.excludes = ["docs/**" "latex/**" "nix/**" "python/**" "tmp/**"];
           };
         };
       };
-      flake.templates.default.path = ./.;
+      flake.templates.default = {
+        description = "";
+        path = ./.;
+      };
     };
 }

@@ -50,8 +50,6 @@
           default = pkgs.mkShell {buildInputs = dependencies;};
         };
         treefmt = {
-          projectRootFile = "flake.nix";
-          settings.global.excludes = ["prm/**" "pyscript/**" "python/**" "tmp/**"];
           programs = {
             alejandra.enable = true;
             biome.enable = true;
@@ -59,30 +57,39 @@
             prettier.enable = true;
             statix.enable = true;
           };
-          settings.formatter = {
-            biome = {
-              options = ["check" "--unsafe"];
-              includes = ["script.js" "style.css"];
+          projectRootFile = "flake.nix";
+          settings = {
+            formatter = {
+              biome = {
+                options = ["check" "--unsafe"];
+                includes = ["script.js" "style.css"];
+              };
+              check-directory = {
+                command = pkgs.bash;
+                options = [
+                  "-euc"
+                  ''
+                    if ls -ap | grep -v -E -x './|../|.env|.gitignore|CNAME|Makefile|index.html|flake.lock|flake.nix|prm/|pyscript/|python/|script.js|style.css|tmp/' | grep -q .; then
+                      exit 1
+                    fi
+                    test $(basename $(pwd)) = "docs"
+                  ''
+                  "--"
+                ];
+                includes = ["flake.nix"];
+              };
+              prettier = {
+                options = ["--print-width" "999"];
+                includes = ["index.html"];
+              };
             };
-            check-directory = {
-              command = pkgs.bash;
-              options = [
-                "-euc"
-                ''
-                  if ls -ap | grep -v -E -x './|../|.env|.gitignore|CNAME|Makefile|index.html|flake.lock|flake.nix|prm/|pyscript/|python/|script.js|style.css|tmp/' | grep -q .; then exit 1; fi
-                  test $(basename $(pwd)) = "docs"
-                ''
-                "--"
-              ];
-              includes = ["**"];
-            };
-            prettier = {
-              options = ["--print-width" "999"];
-              includes = ["index.html"];
-            };
+            global.excludes = ["prm/**" "pyscript/**" "python/**" "tmp/**"];
           };
         };
       };
-      flake.templates.default.path = ./.;
+      flake.templates.default = {
+        description = "";
+        path = ./.;
+      };
     };
 }

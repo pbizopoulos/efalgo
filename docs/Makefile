@@ -3,16 +3,10 @@ all: tmp tmp/all-done
 check: tmp tmp/check-done
 
 clean:
-	rm -rf result tmp/
+	rm -rf tmp/
 
 .gitignore:
-	printf '.env\nresult\ntmp/\n' > $@
-
-flake.lock:
-	nix flake update
-
-flake.nix:
-	nix flake init
+	printf '.env\ntmp/\n' > $@
 
 index.html:
 	touch $@
@@ -26,4 +20,5 @@ tmp/all-done: .gitignore flake.lock flake.nix index.html
 
 tmp/check-done: .gitignore flake.lock flake.nix index.html
 	nix fmt
+	nix flake check
 	touch $@
