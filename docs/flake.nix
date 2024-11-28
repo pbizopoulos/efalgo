@@ -1,5 +1,9 @@
 {
   inputs = {
+    check-directory-structure = {
+      url = "github:pbizopoulos/check-directory-structure?dir=python";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
@@ -11,6 +15,7 @@
     };
   };
   outputs = {
+    check-directory-structure,
     flake-parts,
     nixpkgs,
     treefmt-nix,
@@ -64,19 +69,9 @@
                 options = ["check" "--unsafe"];
                 includes = ["script.js" "style.css"];
               };
-              check-directory = {
-                command = pkgs.bash;
-                options = [
-                  "-euc"
-                  ''
-                    if ls -ap | grep -v -E -x './|../|.env|.gitignore|CNAME|Makefile|index.html|flake.lock|flake.nix|prm/|pyscript/|python/|script.js|style.css|tmp/' | grep -q .; then
-                      exit 1
-                    fi
-                    test $(basename $(pwd)) = "docs"
-                  ''
-                  "--"
-                ];
-                includes = ["flake.nix"];
+              check-directory-structure = {
+                command = check-directory-structure.packages.${system}.default;
+                includes = ["."];
               };
               prettier = {
                 options = ["--print-width" "999"];

@@ -1,5 +1,9 @@
 {
   inputs = {
+    check-directory-structure = {
+      url = "github:pbizopoulos/check-directory-structure?dir=python";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     check-readme = {
       url = "github:pbizopoulos/check-readme?dir=python";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -15,6 +19,7 @@
     };
   };
   outputs = {
+    check-directory-structure,
     check-readme,
     flake-parts,
     nixpkgs,
@@ -54,21 +59,9 @@
               beautysh = {
                 includes = ["deploy.sh" "deploy-requirements.sh"];
               };
-              check-directory = {
-                command = pkgs.bash;
-                options = [
-                  "-euc"
-                  ''
-                    if ls -ap | grep -v -E -x './|../|.env|.git/|.github/|.gitignore|CITATION.bib|LICENSE|Makefile|README|deploy.sh|deploy-requirements.sh|docs/|flake.lock|flake.nix|latex/|nix/|python/|tmp/' | grep -q .; then
-                      exit 1
-                    fi
-                    if printf "$(basename $(pwd))" | grep -v -E -x '^[a-z0-9]+([-.][a-z0-9]+)*$'; then
-                      false
-                    fi
-                  ''
-                  "--"
-                ];
-                includes = ["flake.nix"];
+              check-directory-structure = {
+                command = check-directory-structure.packages.${system}.default;
+                includes = ["."];
               };
               check-readme = {
                 command = check-readme.packages.${system}.default;
