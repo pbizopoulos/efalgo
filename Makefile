@@ -11,6 +11,9 @@ clean:
 README:
 	printf "# $$(basename $$(pwd))\n\n" > $@
 
+flake.lock:
+	nix flake lock
+
 tmp:
 	mkdir $@
 

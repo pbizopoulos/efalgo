@@ -8,6 +8,9 @@ clean:
 .gitignore:
 	printf '.env\ntmp/\n' > $@
 
+flake.lock:
+	nix flake lock
+
 index.html:
 	touch $@
 
