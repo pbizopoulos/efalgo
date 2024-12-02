@@ -32,27 +32,15 @@
         inputs.treefmt-nix.flakeModule
       ];
       perSystem = {system, ...}: let
-        dependencies = [
-          pkgs.http-server
-          pkgs.openssl
-        ];
         pkgs = import nixpkgs {inherit system;};
       in {
         devShells = {
-          all = pkgs.mkShell {
-            buildInputs = dependencies;
-            shellHook = ''
-              set -e
-              if [ -n "$DEBUG" ]; then
-                exit 0
-              else
-                openssl req -keyout tmp/privkey.pem -nodes -out tmp/fullchain.pem -subj '/C=..' -x509
-                http-server --cert tmp/fullchain.pem --key tmp/privkey.pem --tls
-                exit 1
-              fi
-            '';
+          default = pkgs.mkShell {
+            buildInputs = [
+              pkgs.http-server
+              pkgs.openssl
+            ];
           };
-          default = pkgs.mkShell {buildInputs = dependencies;};
         };
         treefmt = {
           programs = {
