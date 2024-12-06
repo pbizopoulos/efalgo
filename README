@@ -2,7 +2,6 @@
 
 # Use Requirements
 # POSIX Shell & Utilities
-# POSIX Shell & Utilities
 # Git
 # Nix
 git clone git@github.com:efalgo/efalgo.com ~/github.com/efalgo/efalgo.com
