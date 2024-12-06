@@ -1,7 +1,7 @@
 {
   inputs = {
-    check-directory-structure = {
-      url = "github:pbizopoulos/check-directory-structure?dir=python";
+    check-directory = {
+      url = "github:pbizopoulos/check-directory?dir=python";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     flake-parts = {
@@ -15,7 +15,7 @@
     };
   };
   outputs = {
-    check-directory-structure,
+    check-directory,
     flake-parts,
     nixpkgs,
     treefmt-nix,
@@ -57,8 +57,8 @@
                 options = ["check" "--unsafe"];
                 includes = ["script.js" "style.css"];
               };
-              check-directory-structure = {
-                command = check-directory-structure.packages.${system}.default;
+              check-directory = {
+                command = check-directory.packages.${system}.default;
                 includes = ["."];
               };
               prettier = {
