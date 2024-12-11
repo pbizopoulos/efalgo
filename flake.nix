@@ -1,16 +1,16 @@
 {
   inputs = {
-    check-directory = {
-      url = "github:pbizopoulos/check-directory?dir=python";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    check-readme = {
-      url = "github:pbizopoulos/check-readme?dir=python";
-      inputs.nixpkgs.follows = "nixpkgs";
+    devour-flake = {
+      flake = false;
+      url = "github:srid/devour-flake";
     };
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
+    pbizopoulos-github-io = {
+      url = "github:pbizopoulos/pbizopoulos.github.io";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     treefmt-nix = {
@@ -19,9 +19,8 @@
     };
   };
   outputs = {
-    check-directory,
-    check-readme,
     flake-parts,
+    pbizopoulos-github-io,
     nixpkgs,
     treefmt-nix,
     ...
@@ -37,16 +36,40 @@
         inputs.treefmt-nix.flakeModule
       ];
       perSystem = {system, ...}: let
-        pkgs = import nixpkgs {inherit system;};
+        pkgs = import nixpkgs {
+          inherit system;
+        };
       in {
+        devShells = {
+          docs = pkgs.mkShell {
+            buildInputs = [
+              pkgs.http-server
+            ];
+          };
+        };
+        packages = {
+          build-all = let
+            devour-flake = pkgs.callPackage inputs.devour-flake {};
+          in
+            pkgs.writeShellApplication {
+              name = "build-all";
+              runtimeInputs = [
+                pkgs.nix
+                devour-flake
+              ];
+              text = ''
+                nix flake lock --no-update-lock-file
+                devour-flake . "$@"
+              '';
+            };
+        };
         treefmt = {
           programs = {
             actionlint.enable = true;
             alejandra.enable = true;
-            beautysh.enable = true;
+            biome.enable = true;
             deadnix.enable = true;
-            shellcheck.enable = true;
-            shfmt.enable = true;
+            prettier.enable = true;
             statix.enable = true;
             yamlfmt.enable = true;
           };
@@ -56,34 +79,27 @@
               actionlint = {
                 includes = [".github/workflows/workflow.yml"];
               };
-              beautysh = {
-                includes = ["deploy.sh" "deploy-requirements.sh"];
+              biome = {
+                options = ["check" "--unsafe"];
+                includes = ["script.js" "style.css"];
               };
               check-directory = {
-                command = check-directory.packages.${system}.default;
+                command = pbizopoulos-github-io.packages.${system}.check-directory;
                 includes = ["."];
               };
               check-readme = {
-                command = check-readme.packages.${system}.default;
+                command = pbizopoulos-github-io.packages.${system}.check-readme;
                 includes = ["README"];
               };
-              shellcheck = {
-                includes = ["deploy.sh" "deploy-requirements.sh"];
-              };
-              shfmt = {
-                includes = ["deploy.sh" "deploy-requirements.sh"];
-                options = ["--posix" "--write"];
-              };
-              tex-fmt = {
-                command = pkgs.tex-fmt;
-                includes = ["CITATION.bib"];
-                options = ["--keep"];
+              prettier = {
+                options = ["--print-width" "999"];
+                includes = ["index.html"];
               };
               yamlfmt = {
                 includes = [".github/workflows/workflow.yml"];
               };
             };
-            global.excludes = ["docs/**" "latex/**" "nix/**" "python/**" "tmp/**"];
+            global.excludes = ["prm/**" "tmp/**"];
           };
         };
       };
