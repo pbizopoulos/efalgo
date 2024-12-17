@@ -7,7 +7,6 @@ git clone git@github.com:efalgo/efalgo.com ~/github.com/efalgo/efalgo.com
 
 # Use
 cd ~/github.com/efalgo/efalgo.com/ && nix develop .#docs --command http-server & xdg-open http://localhost:8080 && cd -
-xdg-open https://localhost:8080
 
 # Debug Requirements
 # Use Requirements
