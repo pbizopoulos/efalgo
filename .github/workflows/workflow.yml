@@ -31,7 +31,7 @@ jobs:
   deploy-github-page:
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: efalgo.com
     runs-on: ubuntu-latest
     needs: build-github-page
     steps:
