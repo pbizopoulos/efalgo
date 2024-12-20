@@ -489,11 +489,11 @@
         "treefmt": "treefmt"
       },
       "locked": {
-        "lastModified": 1734691242,
-        "narHash": "sha256-+tETMd+KowgIGlrWuX0c+coVXrP00rwEl9V/ohIS/50=",
+        "lastModified": 1734699051,
+        "narHash": "sha256-F41lGDBT/Y0SfZVJ/NuDoe8JYuM4bcSSnW/3i5L0DrI=",
         "owner": "pbizopoulos",
         "repo": "pbizopoulos.github.io",
-        "rev": "071fcadaf0a30911c5dac833dc4cc01ec6de4fe7",
+        "rev": "7e569c4cce1d26ed81cad4b4f5ab76648191496c",
         "type": "github"
       },
       "original": {
