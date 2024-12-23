@@ -14,8 +14,11 @@
     inputs.snowfall-lib.mkFlake {
       inherit inputs;
       src = ./.;
-      outputs-builder = _channels: {
+      outputs-builder = channels: {
         formatter = inputs.pbizopoulos-github-io.formatter.x86_64-linux;
+        packages = {
+          inherit (inputs.pbizopoulos-github-io.pkgs.${channels.nixpkgs.system}.nixpkgs.internal) build-all-outputs;
+        };
       };
     };
 }

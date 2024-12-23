@@ -15,6 +15,7 @@ jobs:
           cd ~/github.com/"$GITHUB_REPOSITORY"
           nix fmt
           nix flake check
+          nix run .#build-all-outputs
         env:
           GH_TOKEN: ${{ github.token }}
   build-github-page:
