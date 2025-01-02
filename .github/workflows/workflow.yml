@@ -15,7 +15,6 @@ jobs:
           cd ~/github.com/"$GITHUB_REPOSITORY"
           nix fmt
           nix flake check
-          nix run .#build-all-outputs
         env:
           GH_TOKEN: ${{ github.token }}
   build-github-page:
@@ -25,8 +24,7 @@ jobs:
       - name: Build static files
         id: build
         run: |
-          mkdir _site/
-          cp shells/docs/* _site/
+          cp -r packages/docs/ _site/
       - name: Upload static files as artifact
         id: deployment
         uses: actions/upload-pages-artifact@v3

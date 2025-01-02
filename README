@@ -1,18 +1,10 @@
 # efalgo.com
 
-# Use Requirements
-# Git
-# Nix
-git clone git@github.com:efalgo/efalgo.com ~/github.com/efalgo/efalgo.com
+# Run Deployed Requirements
+# Any Web Browser
 
-# Use
-cd ~/github.com/efalgo/efalgo.com/ && nix develop .#docs --command http-server & xdg-open http://localhost:8080 && cd -
-
-# Debug Requirements
-# Use Requirements
-
-# Debug
-nix run ~/github.com/efalgo/efalgo.com#build-all
+# Run Deployed
+xdg-open https://efalgo.com
 
 # Deploy Requirements
 # Buy efalgo.com domain from DNS provider
@@ -28,9 +20,11 @@ xdg-open https://github.com/efalgo/efalgo.com/settings/pages
 # Deploy
 # Done automatically after each git push
 
-# Use Deployed Requirements
-# Any Web Browser
+# Run Locally Requirements
+# Git
+# Nix
+git clone git@github.com:efalgo/efalgo.com ~/github.com/efalgo/efalgo.com
 
-# Use Deployed
-xdg-open https://efalgo.com
+# Run Locally
+bash ~/github.com/efalgo/efalgo.com/packages/docs/run.sh
 
