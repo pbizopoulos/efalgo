@@ -21,10 +21,17 @@ xdg-open https://github.com/efalgo/efalgo.com/settings/pages
 # Done automatically after each git push
 
 # Run Locally Requirements
+# POSIX Shell & Utilities
 # Git
 # Nix
 git clone git@github.com:efalgo/efalgo.com ~/github.com/efalgo/efalgo.com
 
 # Run Locally
-bash ~/github.com/efalgo/efalgo.com/packages/docs/run.sh
+make -C ~/github.com/efalgo/efalgo.com/packages/docs/
+
+# Run Debug Locally Requirements
+# Run Locally Requirements
+
+# Run Debug Locally
+DEBUG=1 make clean check all -C ~/github.com/efalgo/efalgo.com/packages/docs/
 
