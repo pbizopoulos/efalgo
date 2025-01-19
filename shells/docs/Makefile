@@ -10,9 +10,6 @@ clean:
 	rm -rf tmp/
 	find ${REPOSITORY_DIR} -type f -exec touch {} +
 
-index.html:
-	touch $@
-
 tmp:
 	mkdir $@
 
