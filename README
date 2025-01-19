@@ -27,11 +27,11 @@ xdg-open https://github.com/efalgo/efalgo.com/settings/pages
 git clone git@github.com:efalgo/efalgo.com ~/github.com/efalgo/efalgo.com
 
 # Run Locally
-make -C ~/github.com/efalgo/efalgo.com/packages/docs/
+make -C ~/github.com/efalgo/efalgo.com/shells/docs/
 
 # Run Debug Locally Requirements
 # Run Locally Requirements
 
 # Run Debug Locally
-DEBUG=1 make clean check all -C ~/github.com/efalgo/efalgo.com/packages/docs/
+DEBUG=1 make clean check all -C ~/github.com/efalgo/efalgo.com/shells/docs/
 

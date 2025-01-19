@@ -13,7 +13,7 @@ jobs:
       - run: |
           gh repo clone "$GITHUB_REPOSITORY" ~/github.com/"$GITHUB_REPOSITORY"
           cd ~/github.com/"$GITHUB_REPOSITORY"
-          DEBUG=1 make clean check all -C packages/docs/
+          DEBUG=1 make check all -C shells/docs/
         env:
           GH_TOKEN: ${{ github.token }}
   build-github-page:
@@ -23,7 +23,7 @@ jobs:
       - name: Build static files
         id: build
         run: |
-          cp -r packages/docs/ _site/
+          cp -r shells/docs/ _site/
       - name: Upload static files as artifact
         id: deployment
         uses: actions/upload-pages-artifact@v3
