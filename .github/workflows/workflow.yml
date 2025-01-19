@@ -12,8 +12,7 @@ jobs:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
       - run: |
           gh repo clone "$GITHUB_REPOSITORY" ~/github.com/"$GITHUB_REPOSITORY"
-          cd ~/github.com/"$GITHUB_REPOSITORY"
-          DEBUG=1 make check all -C shells/docs/
+          DEBUG=1 make check all -C ~/github.com/"$GITHUB_REPOSITORY"/shells/docs/
         env:
           GH_TOKEN: ${{ github.token }}
   build-github-page:
