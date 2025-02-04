@@ -1,7 +1,7 @@
 {
   inputs = {
-    canonicalize = {
-      url = "github:pbizopoulos/canonicalize";
+    canonicalization = {
+      url = "github:pbizopoulos/canonicalization";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -16,7 +16,7 @@
       inherit inputs;
       src = ./.;
       outputs-builder = _channels: {
-        formatter = inputs.canonicalize.formatter.x86_64-linux;
+        formatter = inputs.canonicalization.formatter.x86_64-linux;
       };
     };
 }

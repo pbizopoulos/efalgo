@@ -1,6 +1,6 @@
 {
   "nodes": {
-    "canonicalize": {
+    "canonicalization": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
@@ -9,16 +9,16 @@
         "treefmt": "treefmt"
       },
       "locked": {
-        "lastModified": 1738570737,
-        "narHash": "sha256-otzhdmuVVHP7am0lwcfZOnn4qLMPqVHc7MXTU8Lv8/E=",
+        "lastModified": 1738664551,
+        "narHash": "sha256-iW/gL0MKiNRzOFzkKgNuD98wFErNJCwPIMww3YHs8jU=",
         "owner": "pbizopoulos",
-        "repo": "canonicalize",
-        "rev": "42626fc330209746731f406352180ddfe10c9b08",
+        "repo": "canonicalization",
+        "rev": "fd5aa8260bd72a19dc46fe571f16592a42073648",
         "type": "github"
       },
       "original": {
         "owner": "pbizopoulos",
-        "repo": "canonicalize",
+        "repo": "canonicalization",
         "type": "github"
       }
     },
@@ -146,7 +146,7 @@
     },
     "root": {
       "inputs": {
-        "canonicalize": "canonicalize",
+        "canonicalization": "canonicalization",
         "nixpkgs": "nixpkgs",
         "snowfall-lib": "snowfall-lib_2"
       }
@@ -156,7 +156,7 @@
         "flake-compat": "flake-compat",
         "flake-utils-plus": "flake-utils-plus",
         "nixpkgs": [
-          "canonicalize",
+          "canonicalization",
           "nixpkgs"
         ]
       },
@@ -229,7 +229,7 @@
     "treefmt": {
       "inputs": {
         "nixpkgs": [
-          "canonicalize",
+          "canonicalization",
           "nixpkgs"
         ]
       },
