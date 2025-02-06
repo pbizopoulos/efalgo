@@ -1,2 +1,1 @@
-{ pkgs }:
-  pkgs.mkShell { buildInputs = [ (pkgs.http-server) ]; }
+{ pkgs }: pkgs.mkShell { buildInputs = [ pkgs.http-server ]; }

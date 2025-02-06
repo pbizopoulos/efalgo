@@ -20,6 +20,4 @@ tmp/all-done: ${REPOSITORY_DIR}/flake.lock default.nix index.html
 tmp/check-done: ${REPOSITORY_DIR}/flake.lock default.nix index.html
 	nix flake check
 	nix fmt
-	nix flake lock --no-update-lock-file
-	nix build github:srid/devour-flake -L --no-link --print-out-paths --override-input flake ${REPOSITORY_DIR}/flake.nix
 	touch $@
