@@ -9,11 +9,11 @@
         "treefmt": "treefmt"
       },
       "locked": {
-        "lastModified": 1738783980,
-        "narHash": "sha256-fZhP0H0xDvteOyOu90lFvHJXqNBGgj4vlctcwf+W5xc=",
+        "lastModified": 1738852768,
+        "narHash": "sha256-Jbw3gljBvl3qTJ3TCStnBaGRmNwDgQv97nnFATH9Mcw=",
         "owner": "pbizopoulos",
         "repo": "canonicalization",
-        "rev": "6b96f274e53f93ce1397cad9fca1cf7857cf22ef",
+        "rev": "e31328c94102b72c550fe3efa256fb48b842c8f8",
         "type": "github"
       },
       "original": {
