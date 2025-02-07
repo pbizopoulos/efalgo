@@ -4,10 +4,10 @@ REPOSITORY_DIR := $(shell git -C $(MAKEFILE_DIR) rev-parse --show-toplevel)
 
 all: tmp tmp/all-done
 
-check: tmp tmp/check-done
+check: ${REPOSITORY_DIR}/tmp ${REPOSITORY_DIR}/tmp/check-done
 
 clean:
-	rm -rf tmp/
+	rm -rf ${REPOSITORY_DIR}/tmp/
 	find ${REPOSITORY_DIR} -type f -exec touch {} +
 
 tmp:
@@ -19,7 +19,10 @@ tmp/all-done: ${REPOSITORY_DIR}/flake.lock default.nix index.html
 	fi
 	touch $@
 
-tmp/check-done: ${REPOSITORY_DIR}/flake.lock default.nix index.html
+${REPOSITORY_DIR}/tmp:
+	mkdir $@
+
+${REPOSITORY_DIR}/tmp/check-done: ${REPOSITORY_DIR}/flake.lock default.nix index.html
 	nix flake check
 	nix fmt
 	touch $@
