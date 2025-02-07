@@ -14,7 +14,9 @@ tmp:
 	mkdir $@
 
 tmp/all-done: ${REPOSITORY_DIR}/flake.lock default.nix index.html
-	nix develop ".#${MAKEFILE_DIR_NAME}" --command bash -c "[ -z "${DEBUG}" ] && http-server || true"
+	if [ -z "${DEBUG}" ]; then \
+		nix develop ".#${MAKEFILE_DIR_NAME}" --command http-server; \
+	fi
 	touch $@
 
 tmp/check-done: ${REPOSITORY_DIR}/flake.lock default.nix index.html
